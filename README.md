@@ -45,3 +45,18 @@ yc compute instance create \
  - собрал файлы для immutable в files
  - создал bake образ reddit-full
  - создал create-reddit-vm.sh для раскатки из bake образа, где image-family=reddit-full
+
+ ДЗ 6 к лекции 8
+ - установил terraform обновил под yc
+ - добавил служебные и сенсетив файлы terraform в .gitignore
+ - создал main.tf, определил Provider
+ - в main.tf определил resource
+ - создал VM через terraform apply, решил проблему с подключением по ssh
+ - создал outputs.tf - получил ip созданного инстанса
+ - добавил files, добавил Provisioners в main.tf для раскатки приложения на построенной ВМ
+ - пересоздал ВМ через terraform taint, terraform apply
+ - создал variables.tf, параметризировал main.tf, определил переменные в terraform.tfvars
+ - удалил ВМ, создал заново, проверил работоспособность
+ - определил переменную private_key_path и default для zone
+ - создал terraform.tfvars.example
+ - не сделал задание с ** про лоадбалансер :(
