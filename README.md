@@ -1,7 +1,7 @@
 # rashevtsov_infra
 rashevtsov Infra repository
 
-ДЗ к Лекции 5
+ДЗ 3 к Лекции 5
 Решение "в одну команду"
 ssh -i ~/.ssh/appuser -AJ appuser@130.193.39.165 appuser@10.130.0.26
 
@@ -17,3 +17,16 @@ OSError: [Errno 2] No such file or directory
 
 bastion_IP = 130.193.39.165
 someinternalhost_IP = 10.130.0.26
+
+ДЗ 4 к лекции 6
+testapp_IP = 130.193.49.220
+testapp_port = 9292
+
+yc compute instance create \
+  --name reddit-app \
+  --hostname reddit-app \
+  --memory=4 \
+  --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
+  --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+  --metadata serial-port-enable=1 \
+  --metadata-from-file user-data=./startup-reddit-meta.yaml
