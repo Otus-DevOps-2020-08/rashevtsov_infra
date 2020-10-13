@@ -2,6 +2,7 @@
 rashevtsov Infra repository
 
 ДЗ 3 к Лекции 5
+
 Решение "в одну команду"
 ssh -i ~/.ssh/appuser -AJ appuser@130.193.39.165 appuser@10.130.0.26
 
@@ -19,6 +20,7 @@ bastion_IP = 130.193.39.165
 someinternalhost_IP = 10.130.0.26
 
 ДЗ 4 к лекции 6
+
 testapp_IP = 130.193.49.220
 testapp_port = 9292
 
@@ -30,3 +32,31 @@ yc compute instance create \
   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
   --metadata serial-port-enable=1 \
   --metadata-from-file user-data=./startup-reddit-meta.yaml
+
+ДЗ 5 к лекции 7
+ - установи packer
+ - создал сервисный аккаунт YC c правами для packer
+ - создал service account key.json
+ - создал шаблон для packer ubuntu16.json
+ - собрал файлы для ubuntu16 в scripts
+ - создал fry образ reddit-base
+ - параметризировал шаблон, сделал фейковые параметры в variables.json.examples
+ - создал шаблон immutable.json
+ - собрал файлы для immutable в files
+ - создал bake образ reddit-full
+ - создал create-reddit-vm.sh для раскатки из bake образа, где image-family=reddit-full
+
+ ДЗ 6 к лекции 8
+ - установил terraform обновил под yc
+ - добавил служебные и сенсетив файлы terraform в .gitignore
+ - создал main.tf, определил Provider
+ - в main.tf определил resource
+ - создал VM через terraform apply, решил проблему с подключением по ssh
+ - создал outputs.tf - получил ip созданного инстанса
+ - добавил files, добавил Provisioners в main.tf для раскатки приложения на построенной ВМ
+ - пересоздал ВМ через terraform taint, terraform apply
+ - создал variables.tf, параметризировал main.tf, определил переменные в terraform.tfvars
+ - удалил ВМ, создал заново, проверил работоспособность
+ - определил переменную private_key_path и default для zone
+ - создал terraform.tfvars.example
+ - не сделал задание с ** про лоадбалансер :(
