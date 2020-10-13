@@ -1,0 +1,8 @@
+{
+   "id": "keyExample",
+   "service_account_id": "account_id",
+   "created_at": "2020-10-13T13:05:11Z",
+   "key_algorithm": "RSA_2048",
+   "public_key": "pubkeyExample",
+   "private_key": "privatekeyExample"
+}
