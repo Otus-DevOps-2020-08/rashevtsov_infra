@@ -1,4 +1,4 @@
 {
-    "service_account_key_file": "/bla/bla/bla.json",
+    "service_account_key_file": "keyExample.json",
     "folder_id": "111"
 }
